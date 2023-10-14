@@ -30,6 +30,7 @@ class Exchange:
             'enableRateLimit': True,
             'options': {'defaultType': 'future'},
         })
+        self.__is_fake_orders = True
         self.__markets = None
         self.__base_currency = 'USDT'
         self.__size = {'type': 'percent',
@@ -45,8 +46,9 @@ class Exchange:
     def set_base_currency(self, base_currency):
         self.__base_currency = base_currency
 
-    def set_sandbox_mode(self, is_demo=True):
-        self.__private_ccxt.set_sandbox_mode(is_demo)
+    def set_sandbox_mode(self, is_testnet=False, is_fake_orders=True):
+        self.__is_fake_orders = is_fake_orders
+        self.__private_ccxt.set_sandbox_mode(is_testnet)
 
     def load_markets(self):
         self.__markets = self.__public_ccxt.load_markets()
@@ -119,12 +121,13 @@ class Exchange:
     def __create_order(self, symbol, side, is_exit=False, tipe='market'):
         amount = self.__fetch_open_amount(symbol) if is_exit else self.__set_position_amount(symbol)
         screen.trades(symbol, side, tipe, amount, 'EXIT' if is_exit else 'ENTRY') if self.show['trades'] else None
-        return self.__private_ccxt.create_order(symbol=symbol.replace('/', ''),
-                                                side=side,
-                                                type=tipe,
-                                                amount=amount,
-                                                params={'reduceOnly': True} if is_exit else {}
-                                                )
+        order = self.__private_ccxt.create_order(symbol=symbol.replace('/', ''),
+                                                 side=side,
+                                                 type=tipe,
+                                                 amount=amount,
+                                                 params={'reduceOnly': True} if is_exit else {}
+                                                 ) if not self.__is_fake_orders else 'fake order'
+        return order
 
     def fetch_all_positions_side(self):
         positions = pd.Series(name='positions', dtype=int)

@@ -1,8 +1,13 @@
+""""
+Ensure that you have inserted the api key and secret in .env file
+"""
+
+
 from bot import Bot
 
 if __name__ == '__main__':
     bot = Bot()
-    bot.set_sandbox_mode(False)
+    bot.set_sandbox_mode(is_testnet=False, is_fake_orders=False)
     bot.load_markets()
 
     bot.show_all_prices_update(False)
@@ -12,6 +17,10 @@ if __name__ == '__main__':
     bot.show_trades(True)
 
     bot.set_base_currency('USDT')
-    bot.set_percent_size(10)  # or bot.set_fixed_size(50)
-    bot.set_leverage(10)
+
+    bot.set_percent_size(25)  # 2 to 5 percent is recommended
+    # or
+    # bot.set_fixed_size(100)
+
+    bot.set_leverage(8)  # 20 maximum because some limitation
     bot.run()

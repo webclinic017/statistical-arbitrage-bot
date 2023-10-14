@@ -16,8 +16,8 @@ class Bot:
         self.__prices_df = pd.DataFrame()
         self.__setup_df = pd.DataFrame()
 
-    def set_sandbox_mode(self, is_demo=True):
-        self.__exchange.set_sandbox_mode(is_demo)
+    def set_sandbox_mode(self, is_testnet=False, is_fake_orders=True):
+        self.__exchange.set_sandbox_mode(is_testnet, is_fake_orders)
 
     def load_markets(self):
         self.__exchange.load_markets()
