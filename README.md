@@ -1,6 +1,6 @@
 # statistical-arbitrage-bot
 
-Trading Botr System for Statistical Arbitrage Cryptocurrencies.
+Trading Bot System for Statistical Arbitrage Cryptocurrencies.
 
 Hello everyone! Once found the best coins at <a href=https://github.com/Algo-Tradings/statistical-arbitrage-research/>statistical-arbitrage-research<a> now we can use its output in this bot.
 Anyway you can also use your prefered coins just editing  <a href=https://github.com/Algo-Tradings/statistical-arbitrage-bot/blob/main/settings/bot_input.csv>bot_input.csv<a>
