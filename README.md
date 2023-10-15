@@ -11,5 +11,5 @@ To run the bot, you should have the lib previously installed. See...
 
 After, you have to insert your api key and specify which exchange will be used at <a href=https://github.com/Algo-Tradings/statistical-arbitrage-bot/blob/main/.env>.env<a>
 
-So finally edit <a href=https://github.com/Algo-Tradings/statistical-arbitrage-bot/blob/main/app_bot.py>appt_bot.py<a> with your preferable settings and run it. As long as the bot continously run, I strongly recommend using a cloud server for that.
+So finally edit <a href=https://github.com/Algo-Tradings/statistical-arbitrage-bot/blob/main/app_bot.py>app_bot.py<a> with your preferable settings and run it. As long as the bot continously run, I strongly recommend using a cloud server for that.
 ENJOY!
